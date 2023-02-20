@@ -4,9 +4,12 @@ import pandas as pd
 
 
 
-def import_cars():
+def import_cars(brand):
+    # uppercase the brand
+    brand_upper = brand.upper()
+
     # define the endpoint
-    endpoint = "https://opendata.rdw.nl/resource/m9d7-ebf2.json"
+    endpoint = f"https://opendata.rdw.nl/resource/m9d7-ebf2.json?merk={brand_upper}"
 
     # execute the request
     response = requests.get(endpoint)
