@@ -1,13 +1,34 @@
-from custom_modules.import_functions import import_cars, import_car_license
-from custom_modules.export_functions import export_df, export_car_plate
+from custom_modules.cardata import CarData, CarDataCollection
 
 
-if __name__ == "__main__":
-    selected_plate = input("Insert the number plate:\n") or "rd-799-k"
+if __name__ == '__main__':
+    car_data = CarData("BMW", "ZWART")
+    car_data.import_cars_brand()
+    car_data.select_columns("merk", "handelsbenaming", "catalogusprijs", "eerste_kleur")
+    car_data.remove_empty_rows("catalogusprijs")
+    car_data.remove_empty_rows("eerste_kleur")
+    car_data.modify_data_types(catalogusprijs=float, eerste_kleur=str)
+    car_data.remove_outliers("catalogusprijs")
+    car_data.data_summary()
 
-    selected_car = import_car_license(selected_plate)
-    export_car_plate(selected_car, selected_plate)
+
+    car_data_2 = CarData("AUDI", "WIT")
+    car_data_2.import_cars_brand()
+    car_data_2.select_columns("merk", "handelsbenaming", "catalogusprijs", "eerste_kleur")
+    car_data_2.remove_empty_rows("catalogusprijs")
+    car_data_2.modify_data_types(catalogusprijs=float, eerste_kleur=str)
+    car_data_2.remove_outliers("catalogusprijs")
+    car_data_2.data_summary()
+
+    # initiate Car data collection
+    car_data_collection = CarDataCollection("My collection")
+    car_data_collection.add_car_data(car_data)
+    car_data_collection.add_car_data(car_data_2)
+
     pass
-    #selected_brand = input("Select brand (TOYOTA): \n") or "TOYOTA"
-    #data = import_cars(selected_brand)
-    #export_df(data, selected_brand)
+
+    # export the data
+    #car_data.export_cars_brand()
+
+
+
