@@ -21,7 +21,6 @@ parser.add_argument("--brand", "-b",
 
 parser.add_argument("--color", "-c",
                     type=str,
-                    default="WIT",
                     help="Select a color of the cars you would like to import.")
 
 parser.add_argument("--plate", "-p",
@@ -29,7 +28,7 @@ parser.add_argument("--plate", "-p",
                     required=False,
                     help="Specify the license plate you would like to import.")
 
-parser.add_argument("--export",
+parser.add_argument("--export", "-e",
                     type=bool,
                     required=False,
                     default=False,
@@ -44,7 +43,7 @@ args = parser.parse_args()
 if __name__ == '__main__':
     # get the brand from the argument parser
     mode = args.mode
-    selected_color=args.color
+    selected_color = args.color
     selected_brand = args.brand
     selected_plate = args.plate
     export = args.export

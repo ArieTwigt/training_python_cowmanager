@@ -6,7 +6,7 @@ import pandas as pd
 RDW_ENDPOINT = "https://opendata.rdw.nl/resource/m9d7-ebf2.json"
 
 
-def import_cars_brand(brand: str, color:str) -> pd.DataFrame:
+def import_cars_brand(brand: str, color: str=None) -> pd.DataFrame:
     '''
     Function that imports car data from the RDW
 
@@ -18,10 +18,13 @@ def import_cars_brand(brand: str, color:str) -> pd.DataFrame:
 
     # uppercase the brand
     brand_upper = brand.upper()
-    color_upper = color.upper()
 
-    # define the endpoint
-    endpoint = f"{RDW_ENDPOINT}?merk={brand_upper}&eerste_kleur={color_upper}"
+    if color == None:
+        # define the endpoint
+        endpoint = f"{RDW_ENDPOINT}?merk={brand_upper}"
+    else:
+        color_upper = color.upper()
+        endpoint = f"{RDW_ENDPOINT}?merk={brand_upper}&eerste_kleur={color_upper}"
 
     # execute the request
     response = requests.get(endpoint)
