@@ -2,7 +2,7 @@ from custom_modules.cardata import CarData, CarDataCollection
 
 
 if __name__ == '__main__':
-    car_data = CarData("BMW", "ZWART")
+    car_data = CarData("BMW", "WIT")
     car_data.import_cars_brand()
     car_data.select_columns("merk", "handelsbenaming", "catalogusprijs", "eerste_kleur")
     car_data.remove_empty_rows("catalogusprijs")

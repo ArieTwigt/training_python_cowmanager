@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <h3>Car Selection</h3>
+        <form method="POST" action="/random_cars_brand">
+            <input class="form-control" name="brand">
+            <button type="submit" class="btn btn-primary">
+                ZOEK
+            </button>
+        </form>
+    </div>
+    <div class="col-md-9">
+        <h3> Car Table </h3>
+        <table class="table">
+            <thead>
+                <th>Kenteken:</th>
+                <th>Brand:</th>
+                <th>Model:</th>
+                <th>Price:</th>
+            </thead>
+            <tbody>
+                {% for car in cars %}
+                <tr>
+                    <td>
+                        <span class="badge rounded-pill text-bg-warning">{{ car.kenteken }}</span>
+                        
+                    </td>
+                    <td>
+                    {{ car.merk }}
+                    </td>
+                    <td>
+                    {{ car.handelsbenaming }}
+                    </td>
+                    <td>
+                    {{ car.catalogusprijs }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="chart"></div>
+
+
+{% endblock %}
+

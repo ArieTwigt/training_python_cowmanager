@@ -46,9 +46,18 @@ def calc_interest_inflation_print(amount, rate, years):
 
 
 
-if __name__ == '__main__':
-    #calc_interest_inflation_print(1000, 0.05, 10)
-    my_result_1 = calc_interest_inflation(1000, 0.05, 10)
-    #my_result_2 = calc_interest_rally(1000, 0.05, 10)
+@correct_rally
+@print_interest
+def calc_interest_rally_print(amount, rate, years):
+    result = amount * ( 1+ rate) ** years
+    return result
 
+
+
+if __name__ == '__main__':
+    print("="*15)
+    calc_interest_inflation_print(1000, 0.05, 10)
+    print("="*15)
+    calc_interest_rally_print(1000, 0.05, 10)
+    
     pass
